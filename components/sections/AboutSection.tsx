@@ -19,22 +19,50 @@ export function AboutSection({
         <CloseButton onClick={onExpand} />
 
         {/* Mobile: stacked layout / Desktop: side-by-side */}
-        <div className="flex h-full flex-col md:flex-row md:items-center md:gap-12 lg:gap-12 m-12">
-          <div className="flex shrink-0 items-center justify-center py-6 md:w-2/5 md:py-0">
+        <div className="flex h-full flex-col md:flex-row md:items-center md:gap-12 lg:gap-12 mt-0 mx-12 mb-12">
+          <div className="flex shrink-0 items-center justify-center pt-0 pb-6 md:w-2/5 md:py-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={data.image}
               alt={data.imageAlt}
-              className="h-48 w-48 object-contain sm:h-56 sm:w-56 md:h-72 md:w-72 lg:h-80 lg:w-80"
+              className="h-32 w-32 object-contain sm:h-40 sm:w-40 md:h-48 md:w-48 lg:h-52 lg:w-52"
             />
           </div>
           <div className="md:w-3/5">
             <SectionHeading_Clickable onClick={onExpand}>
               {`About Me`}
             </SectionHeading_Clickable>
-            <p className="text-body leading-relaxed text-black md:text-lg md:leading-relaxed">
+            <p className="text-body leading-relaxed text-black whitespace-pre-line md:text-lg md:leading-relaxed">
               {data.text}
             </p>
+            <div className="mt-3 text-sm text-black md:text-base">
+              <a
+                href="https://x.com/ai_9684xtpa"
+                target="_blank"
+                rel="noreferrer"
+                className="transition-colors hover:text-[#A14041]"
+              >
+                Twitter
+              </a>
+              <span className="mx-2">|</span>
+              <a
+                href="https://www.binance.com/zh-CN/square/profile/aiaptx"
+                target="_blank"
+                rel="noreferrer"
+                className="transition-colors hover:text-[#A14041]"
+              >
+                币安广场
+              </a>
+              <span className="mx-2">|</span>
+              <a
+                href="https://t.me/+4SjLQI96GHQyZDVl"
+                target="_blank"
+                rel="noreferrer"
+                className="transition-colors hover:text-[#A14041]"
+              >
+                TG 频道
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -49,8 +77,8 @@ export function AboutSection({
         </SectionHeading_Clickable>
       </div>
 
-      <div className="mt-3 flex items-start gap-3 sm:mt-4 sm:gap-4 xl:gap-6">
-        <div className="relative h-24 w-24 shrink-0 sm:h-32 sm:w-32 md:h-40 md:w-40 xl:h-56 xl:w-56">
+      <div className="mt-3 flex items-start gap-3 pl-8 sm:mt-4 sm:gap-4 xl:gap-6">
+        <div className="relative h-16 w-16 shrink-0 sm:h-20 sm:w-20 md:h-28 md:w-28 xl:h-36 xl:w-36">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={data.image}
@@ -58,7 +86,39 @@ export function AboutSection({
             className="h-full w-full object-contain"
           />
         </div>
-        <p className="flex-1 text-body text-black">{data.text}</p>
+        <div className="flex-1">
+          <p className="text-body text-black whitespace-pre-line">
+            {data.text}
+          </p>
+          <div className="mt-3 text-sm text-black md:text-base">
+            <a
+              href="https://x.com/ai_9684xtpa"
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-[#A14041]"
+            >
+              Twitter
+            </a>
+            <span className="mx-2">|</span>
+            <a
+              href="https://www.binance.com/zh-CN/square/profile/aiaptx"
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-[#A14041]"
+            >
+              币安广场
+            </a>
+            <span className="mx-2">|</span>
+            <a
+              href="https://t.me/+4SjLQI96GHQyZDVl"
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-[#A14041]"
+            >
+              TG 频道
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );

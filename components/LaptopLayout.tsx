@@ -8,6 +8,7 @@ import {
   WorkSection,
   AboutSection,
   ContactSection,
+  ContentItemExpanded,
   getClipFrom,
 } from "./sections";
 import { useResizablePanels, useEntryAnimation } from "./hooks";
@@ -17,12 +18,16 @@ type ResizableLayoutProps = {
   siteData: SiteData;
   expandedSection: "work" | "about" | null;
   setExpandedSection: (section: "work" | "about" | null) => void;
+  expandedContentItem: string | null;
+  setExpandedContentItem: (item: string | null) => void;
 };
 
 export default function ResizableLayout({
   siteData,
   expandedSection,
   setExpandedSection,
+  expandedContentItem,
+  setExpandedContentItem,
 }: ResizableLayoutProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [sourceRect, setSourceRect] = useState<DOMRect | null>(null);
@@ -31,15 +36,19 @@ export default function ResizableLayout({
   const workPanelRef = useRef<HTMLDivElement>(null);
   const aboutPanelRef = useRef<HTMLDivElement>(null);
 
-  const handleWorkExpand = useCallback(() => {
-    if (expandedSection === "work") {
-      setExpandedSection(null);
-    } else {
-      const rect = workPanelRef.current?.getBoundingClientRect();
-      if (rect) setSourceRect(rect);
+  const handleSubtitleExpand = useCallback(
+    (item: { title: string; description: string }, rect: DOMRect) => {
+      setSourceRect(rect);
       setExpandedSection("work");
-    }
-  }, [expandedSection]);
+      setExpandedContentItem(item.title);
+    },
+    [],
+  );
+
+  const handleCloseWork = useCallback(() => {
+    setExpandedSection(null);
+    setExpandedContentItem(null);
+  }, []);
 
   const handleAboutExpand = useCallback(() => {
     if (expandedSection === "about") {
@@ -164,8 +173,8 @@ export default function ResizableLayout({
         >
           <div ref={workContentRef} className="h-full p-4">
             <WorkSection
-              data={siteData.projectCategories}
-              onExpand={handleWorkExpand}
+              data={siteData.contentCategories}
+              onSubtitleExpand={handleSubtitleExpand}
             />
           </div>
         </div>
@@ -232,24 +241,31 @@ export default function ResizableLayout({
         </div>
       </div>
 
-      {/* Expanded overlays */}
+      {/* Content 小标题展开遮罩（仅小标题点击时显示） */}
       <ExpandedOverlay
-        isOpen={expandedSection === "work"}
+        isOpen={expandedSection === "work" && !!expandedContentItem}
         clipFrom={clipFrom}
         padding="p-8"
-        uniqueKey="work-expanded"
+        uniqueKey={expandedContentItem ? `work-${expandedContentItem}` : "work-placeholder"}
       >
-        <WorkSection
-          data={siteData.projectCategories}
-          onExpand={handleWorkExpand}
-          isExpanded={true}
-        />
+        {expandedContentItem ? (
+          (() => {
+            const item = siteData.contentCategories.find(
+              (c) => c.title === expandedContentItem,
+            );
+            return item ? (
+              <ContentItemExpanded item={item} onClose={handleCloseWork} />
+            ) : null;
+          })()
+        ) : (
+          <div />
+        )}
       </ExpandedOverlay>
 
       <ExpandedOverlay
         isOpen={expandedSection === "about"}
         clipFrom={clipFrom}
-        padding="p-8"
+        padding="pt-0 px-8 pb-8"
         uniqueKey="about-expanded"
       >
         <AboutSection

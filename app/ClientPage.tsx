@@ -9,6 +9,7 @@ type ExpandedSection = "work" | "about" | null;
 
 export default function ClientPage({ siteData }: { siteData: SiteData }) {
   const [expandedSection, setExpandedSection] = useState<ExpandedSection>(null);
+  const [expandedContentItem, setExpandedContentItem] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen bg-white text-black">
@@ -18,6 +19,8 @@ export default function ClientPage({ siteData }: { siteData: SiteData }) {
           siteData={siteData}
           expandedSection={expandedSection}
           setExpandedSection={setExpandedSection}
+          expandedContentItem={expandedContentItem}
+          setExpandedContentItem={setExpandedContentItem}
         />
       </div>
 
@@ -27,6 +30,8 @@ export default function ClientPage({ siteData }: { siteData: SiteData }) {
           siteData={siteData}
           expandedSection={expandedSection}
           setExpandedSection={setExpandedSection}
+          expandedContentItem={expandedContentItem}
+          setExpandedContentItem={setExpandedContentItem}
         />
       </div>
     </div>

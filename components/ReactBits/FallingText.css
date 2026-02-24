@@ -9,18 +9,21 @@
 }
 
 .falling-text-target {
-  display: inline-block;
+  display: block;
+  width: 100%;
+  overflow-wrap: break-word;
 }
 
 .word {
   display: inline-block;
   margin: 0 2px;
   user-select: none;
+  color: black;
 }
 
 .highlighted {
+  color: #A14041;
   font-weight: bold;
-  color: brown;
 }
 
 .falling-text-canvas {

@@ -34,10 +34,22 @@ export type ProjectCategory = {
   projects: Project[];
 };
 
+export type ContentLink = {
+  text: string;
+  href: string;
+};
+
+export type ContentItem = {
+  title: string;
+  description: string;
+  links?: ContentLink[];
+};
+
 export type SiteData = {
   hero: HeroData;
   skills: SkillsData;
   about: AboutData;
   contact: ContactEntry[];
   projectCategories: ProjectCategory[];
+  contentCategories: ContentItem[];
 };

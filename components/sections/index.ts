@@ -1,6 +1,7 @@
 export { HeroSection } from "./HeroSection";
 export { SkillsSection } from "./SkillsSection";
 export { WorkSection } from "./WorkSection";
+export { ContentItemExpanded } from "./ContentItemExpanded";
 export { AboutSection } from "./AboutSection";
 export { ContactSection } from "./ContactSection";
 export { ProjectCard } from "./ui/ProjectCard";
