@@ -43,6 +43,7 @@ export type ContentItem = {
   title: string;
   description: string;
   links?: ContentLink[];
+  url?: string;
 };
 
 export type SiteData = {

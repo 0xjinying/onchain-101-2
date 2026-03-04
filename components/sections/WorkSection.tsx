@@ -15,6 +15,10 @@ export function WorkSection({
   isExpanded = false,
 }: WorkSectionProps) {
   const handleSubtitleClick = (item: ContentItem, target: HTMLElement) => {
+    if (item.url) {
+      window.open(item.url, "_blank", "noopener,noreferrer");
+      return;
+    }
     onSubtitleExpand?.(item, target.getBoundingClientRect());
   };
 
