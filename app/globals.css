@@ -166,3 +166,28 @@
     @apply text-primary font-semibold;
   }
 }
+
+/* Ant Design pagination override for tool table */
+.tool-table .ant-pagination-item-active {
+  border-color: #A14041 !important;
+}
+
+.tool-table .ant-pagination-item-active a {
+  color: #A14041 !important;
+}
+
+/* tool-search 右侧自定义放大镜按钮 hover 颜色由 Tailwind 控制，无需额外样式 */
+
+/* Ant Design Input hover/focus override for tool search */
+.tool-search .ant-input-affix-wrapper:hover,
+.tool-search .ant-input-affix-wrapper:focus-within,
+.tool-search .ant-input-affix-wrapper-focused {
+  border-color: #A14041 !important;
+  box-shadow: 0 0 0 1px rgba(161, 64, 65, 0.2) !important;
+}
+
+.tool-search .ant-input:hover,
+.tool-search .ant-input:focus {
+  border-color: #A14041 !important;
+  box-shadow: none !important;
+}

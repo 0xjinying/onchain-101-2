@@ -50,7 +50,7 @@ export function WorkSection({
                       handleSubtitleClick(item, e.currentTarget);
                     }
                   }}
-                  className="group relative inline-block cursor-pointer overflow-hidden py-1 transition-all duration-300 ease-out hover:scale-105"
+                  className="group relative inline-block cursor-pointer overflow-hidden py-0 transition-all duration-300 ease-out hover:scale-105"
                 >
                   <span className="absolute inset-0 origin-left scale-x-0 bg-black transition-transform duration-300 ease-out group-hover:scale-x-100" />
                   <span
@@ -64,8 +64,10 @@ export function WorkSection({
                 </span>
               ) : (
                 <h4
-                  className={`text-black ${isExpanded ? "font-bold" : "font-normal"}`}
-                  style={{ fontSize: "24px" }}
+                  className={`mb-0 text-black ${
+                    isExpanded ? "font-bold" : "font-normal"
+                  }`}
+                  style={{ fontSize: "24px", lineHeight: "1.1" }}
                 >
                   {item.title}
                 </h4>

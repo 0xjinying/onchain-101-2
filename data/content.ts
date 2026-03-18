@@ -57,6 +57,7 @@ export const contentCategories: ContentItem[] = [
   {
     title: "工具分享",
     description: "高效实现地址监控、聪明钱追踪等",
+    url: "https://aiaptx.me/tool",
     links: [
       {
         text: "如何高效追踪巨鲸 / 实体的 Hyperliquid 地址群",
